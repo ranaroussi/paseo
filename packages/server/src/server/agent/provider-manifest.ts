@@ -75,7 +75,44 @@ const CODEX_MODES: AgentProviderModeDefinition[] = [
   },
 ];
 
-const DROID_MODES: AgentProviderModeDefinition[] = [];
+const DROID_MODES: AgentProviderModeDefinition[] = [
+  {
+    id: "normal",
+    label: "Ask",
+    description:
+      "Read-only mode that still asks before any write or tool action with side effects.",
+    icon: "ShieldCheck",
+    colorTier: "safe",
+  },
+  {
+    id: "spec",
+    label: "Spec",
+    description: "Planning mode for writing specs and analyzing the codebase without changes.",
+    icon: "ShieldCheck",
+    colorTier: "planning",
+  },
+  {
+    id: "auto-low",
+    label: "Auto Low",
+    description: "Automatically approves low-risk actions such as file edits inside the workspace.",
+    icon: "ShieldAlert",
+    colorTier: "moderate",
+  },
+  {
+    id: "auto-medium",
+    label: "Auto Medium",
+    description: "Automatically approves medium-risk actions for broader autonomous work.",
+    icon: "ShieldAlert",
+    colorTier: "moderate",
+  },
+  {
+    id: "auto-high",
+    label: "Auto High",
+    description: "Automatically approves high-risk actions with minimal interruption.",
+    icon: "ShieldOff",
+    colorTier: "dangerous",
+  },
+];
 
 const COPILOT_MODES: AgentProviderModeDefinition[] = [
   {
@@ -148,7 +185,7 @@ export const AGENT_PROVIDER_DEFINITIONS: AgentProviderDefinition[] = [
     label: "Droid",
     description:
       "Factory's ACP coding agent with multi-model support, MCP tools, and tunable autonomy",
-    defaultModeId: null,
+    defaultModeId: "normal",
     modes: DROID_MODES,
   },
   {
